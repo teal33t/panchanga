@@ -154,9 +154,13 @@ python panchanga.py -d DD/MM/YYYY -t HH:MM -z [+/-]HH:MM [--calendar gregorian|j
 **خروجی:**
 
 Tithi     : Prathame, Shukla Paksha
+
 Nakshatra : Dhanishta
+
 Yoga      : Sadhya
+
 Karana    : Kimstughna
+
 Rashi     : Makara
 
 ## محاسبات نجومی
