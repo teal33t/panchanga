@@ -90,11 +90,6 @@ Half of a Tithi, calculated based on the progress within the Tithi.
 
 Determined by the Moon's ecliptic longitude, divided into 12 equal parts.
 
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
-
-
 
 # محاسبه‌گر پانچانگا
 
@@ -153,7 +148,37 @@ python panchanga.py -d DD/MM/YYYY -t HH:MM -z [+/-]HH:MM [--calendar gregorian|j
 
 - برای تاریخ شمسی:
   ```bash
-  python panchanga.py -d 23/09/1402 -t 12:00 -z +03:30 --calendar jalali
+    python3 panchanga.py -d 23/09/1402 -t 12:00 -z +03:30 --calendar jalali
   ```
 
 **خروجی:**
+
+Tithi     : Prathame, Shukla Paksha
+Nakshatra : Dhanishta
+Yoga      : Sadhya
+Karana    : Kimstughna
+Rashi     : Makara
+
+## محاسبات نجومی
+
+### تیتی (Tithi)
+بر اساس فاصله زاویه‌ای بین ماه و خورشید، تقسیم بر ۱۲ درجه محاسبه می‌شود.
+
+### ناکشاترا (Nakshatra)
+بر اساس طول دایرة‌البروجی ماه، تقسیم شده به ۲۷ قسمت مساوی تعیین می‌شود.
+
+### یوگا (Yoga)
+از مجموع طول دایرة‌البروجی خورشید و ماه، تقسیم شده به ۲۷ قسمت مساوی محاسبه می‌شود.
+
+### کارانا (Karana)
+نصف یک تیتی، بر اساس پیشرفت در تیتی محاسبه می‌شود.
+
+### راشی (Rashi)
+بر اساس طول دایرة‌البروجی ماه، تقسیم شده به ۱۲ قسمت مساوی تعیین می‌شود.
+
+## مشارکت
+
+از مشارکت‌های شما استقبال می‌کنیم! لطفاً یک Issue باز کنید یا Pull Request ارسال نمایید.
+
+## ارتباط با ما
+[Telegram](https://t.me/samanesmaeil)
