@@ -153,7 +153,7 @@ class MuhurthaFinder:
 if __name__ == "__main__":
     finder = MuhurthaFinder()
     start = datetime.now()
-    end = start + timedelta(days=30)
+    end = start + timedelta(days=7) # change days for your range
     
     results = finder.find_muhurtha(
         start_date=start,

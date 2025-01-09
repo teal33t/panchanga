@@ -133,3 +133,64 @@ python daily_panchanga.py -d DD/MM/YYYY -t HH:MM -z [+/-]HH:MM [--calendar grego
 ```
 
 Example output:
+```bash
+python3 daily_panchanga.py -d 23/09/1402 -t 12:00 -z +03:30 --calendar jalali
+Tithi     : Prathame, Shukla Paksha
+Nakshatra : Dhanishta
+Yoga      : Sadhya
+Karana    : Kimstughna
+Rashi     : Makara
+```
+
+```bash
+python monthly_panchanga.py -z +3:30                         
+
+================================================================================
+                                  January 2025                                  
+================================================================================
+Sun         Mon         Tue         Wed         Thu         Fri         Sat
+--------------------------------------------------------------------------------
+                       1-Pra      2-Pra      3-Pra      4-Dwi      5-Thr     
+                      Ash        Poo        Has        Ash        Swa        
+                      Ayu        Shi        Gan        Ind        Vaj        
+                      Kim        Kim        Bal        Kim        Kim        
+--------------------------------------------------------------------------------
+ 6-Cha      7-Pan      8-Pan      9-Shr     10-Sap     11-Ash     12-Ash     
+Bha        Vis        Roh        Mul        Ash        Utt        Anu        
+Ayu        Var        Suk        Shu        Vaj        Ati        Bra        
+Kim        Kim        Bal        Bal        Bal        Kim        Bal        
+--------------------------------------------------------------------------------
+13-Nav     14-Nav     15-Nav     16-Ash     17-Ash     18-Ash     19-Sap     
+Pus        Poo        Chi        Bha        Swa        Ash        Has        
+Vya        Sho        Ind        Vaj        Ayu        Sid        Ayu        
+Kim        Kim        Kim        Bal        Bal        Kim        Kim        
+--------------------------------------------------------------------------------
+20-Shr     21-Pan     22-Pan     23-Cha     24-Thr     25-Dwi     26-Dwi     
+Poo        Mag        Sra        Pus        Utt        Ash        Sha        
+Sid        Pri        Vaj        Pri        Vya        Sho        Sad        
+Bal        Bal        Kim        Kim        Bal        Bal        Kim        
+--------------------------------------------------------------------------------
+27-Pra     28-Pra     29-Pra     30-Pra     31-Pra                           
+Has        Kri        Mul        Pus        Dha                              
+Dhr        Ayu        Shi        Gan        Vai                              
+Bal        Kim        Kim        Kim        Kim                              
+--------------------------------------------------------------------------------
+```
+
+```bash
+python muhurtha_finder.py
+Suitable period:
+Start: 2025-01-10 04:33
+End: 2025-01-10 06:33
+Duration: 2 hours
+Quality: Good
+
+Astrological Factors:
+This is a good time for meeting because:
+- It falls on Friday, which is an auspicious day for meeting
+- The Nakshatra (lunar mansion) is Chitra, which is favorable for meeting
+- The Tithi (lunar day) is Saptami, which is not in the avoided tithis
+- The Paksha (lunar phase) is Shukla
+- This combination supports clear communication and successful outcomes
+--------------------------------------------------
+```
