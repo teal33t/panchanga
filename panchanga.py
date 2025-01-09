@@ -1,13 +1,8 @@
 import ephem
 import math
-from datetime import datetime, timedelta
-import argparse
-from typing import Dict, NamedTuple
 from dataclasses import dataclass
-try:
-    from jdatetime import datetime as jdatetime
-except ImportError:
-    jdatetime = None
+from datetime import datetime
+
 
 # Constants
 D2R = math.pi / 180.0
@@ -159,64 +154,3 @@ class PanchangaCalculator:
         rashi_long = self.normalize_degrees(moon_long_adjusted)
         rashi_index = int(rashi_long / 30)
         pdata.rashi = AstronomicalConstants.RASHI[rashi_index]
-
-def parse_time(time_str: str) -> float:
-    """Parse time string into decimal hours"""
-    try:
-        hr_str, mn_str = time_str.split(':')
-        return float(hr_str) + float(mn_str) / 60.0
-    except ValueError:
-        raise ValueError("Invalid time format. Use hh:mm.")
-
-def parse_timezone(zone_str: str) -> float:
-    """Parse timezone string into decimal hours"""
-    try:
-        z_hr_str, z_mn_str = zone_str.split(':')
-        z_hr = float(z_hr_str) + float(z_mn_str) / 60.0
-        return -z_hr if zone_str.startswith('-') else z_hr
-    except ValueError:
-        raise ValueError("Invalid timezone format. Use [+/-]hh:mm.")
-
-
-def main():
-    parser = argparse.ArgumentParser(description='Calculate Panchanga with high precision')
-    parser.add_argument('-d', '--date', required=True, help='Date in DD/MM/YYYY format')
-    parser.add_argument('-t', '--time', required=True, help='Time in HH:MM 24-hour format')
-    parser.add_argument('-z', '--zone', required=True, help='Zone with respect to GMT in [+/-]HH:MM format')
-    parser.add_argument('--calendar', default='gregorian', choices=['gregorian', 'jalali'], help='Calendar type of the input date')
-
-    args = parser.parse_args()
-
-    try:
-        dd, mm, yy = map(int, args.date.split('/'))
-        hr = parse_time(args.time)
-        z_hr = parse_timezone(args.zone)
-
-        if args.calendar == 'jalali':
-            if jdatetime is None:
-                print("Error: jdatetime library is not installed. Install it using 'pip install jdatetime' to use Jalali dates.")
-                exit(1)
-            jalali_date = jdatetime(yy, mm, dd)
-            gregorian_date = jalali_date.togregorian()
-            date = datetime(gregorian_date.year, gregorian_date.month, gregorian_date.day, int(hr), int((hr % 1) * 60))
-        else:
-            date = datetime(yy, mm, dd, int(hr), int((hr % 1) * 60))
-
-        local_time = date
-        utc_time = local_time - timedelta(hours=z_hr)
-        observer = PanchangaCalculator.setup_observer(utc_time)
-        calculator = PanchangaCalculator()
-        pdata = calculator.calculate_panchanga(observer.date)
-
-        print(f"Tithi     : {pdata.tithi}, {pdata.paksha} Paksha")
-        print(f"Nakshatra : {pdata.nakshatra}")
-        print(f"Yoga      : {pdata.yoga}")
-        print(f"Karana    : {pdata.karana}")
-        print(f"Rashi     : {pdata.rashi}")
-
-    except ValueError as e:
-        print(f"Error: {str(e)}")
-        exit(1)
-
-if __name__ == "__main__":
-    main()
