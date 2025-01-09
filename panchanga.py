@@ -59,9 +59,27 @@ class PanchangaCalculator:
 
     @staticmethod
     def calculate_ayanamsa(jd: float) -> float:
-        """Calculate ayanamsa for given Julian date"""
-        t = (jd - 2451545.0) / 36525
+        """Calculate Ayanamsa (precession correction) for a given Julian date
+        
+        Ayanamsa is the angular difference between the Sidereal and Tropical zodiacs.
+        It accounts for the precession of the equinoxes - the gradual shift of the 
+        Earth's rotational axis over long periods of time.
+        
+        The formula uses Lahiri Ayanamsa which is the official Ayanamsa of Indian govt:
+        - Base value: 23.452294° (at J2000.0 epoch)
+        - First term: Linear precession rate of -0.0130125°/century
+        - Second term: Quadratic correction of -0.00000164°/century²  
+        - Third term: Cubic correction of +0.000000503°/century³
+        
+        Args:
+            jd (float): Julian Date for which Ayanamsa needs to be calculated
+            
+        Returns:
+            float: Ayanamsa angle in degrees
+        """
+        t = (jd - 2451545.0) / 36525  # Convert to Julian centuries from J2000 epoch
         return 23.452294 - 0.0130125 * t - 0.00000164 * t * t + 0.000000503 * t * t * t
+
 
     @staticmethod
     def setup_observer(date: datetime) -> ephem.Observer:
