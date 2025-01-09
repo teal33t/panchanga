@@ -135,6 +135,7 @@ python daily_panchanga.py -d DD/MM/YYYY -t HH:MM -z [+/-]HH:MM [--calendar grego
 Example output:
 ```bash
 python3 daily_panchanga.py -d 23/09/1402 -t 12:00 -z +03:30 --calendar jalali
+
 Tithi     : Prathame, Shukla Paksha
 Nakshatra : Dhanishta
 Yoga      : Sadhya
@@ -179,6 +180,7 @@ Bal        Kim        Kim        Kim        Kim
 
 ```bash
 python muhurtha_finder.py
+
 Suitable period:
 Start: 2025-01-10 04:33
 End: 2025-01-10 06:33
